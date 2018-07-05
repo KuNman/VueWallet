@@ -1,36 +1,36 @@
 <template lang="pug">
-  main.sign-in
-    .container
-      .row.justify-content-center
-        .col-12.text-center
-          img.sign-in__logo.d-inline-block(src="~assets/logo.svg", alt="Wallet: InventiStudio recruitment task")
-        .col-12.col-md-7.col-lg-5.col-xl-4
-          form
-            label.fs-11.mb-8 E-mail address
-            input.o-input.mb-16(
-              v-model.trim="email",
-              type="email",
-              placeholder="john.doe@mail.com",
-            )
-            label.fs-11.mb-8 Password
-            input.o-input.mb-16(
-              v-model.trim="password",
-              type="password",
-              placeholder="Your pass****",
-            )
-          button.o-btn.bg-blue.mt-40.w-100(
-            @click="signIn()",
-            :disabled="$v.$error",
-            type="button",
-          )
-            span.fs-16.c-white Sign in
+      main.sign-in
+        .container
+          .row.justify-content-center
+            .col-12.text-center
+              img.sign-in__logo.d-inline-block(src="~assets/logo.svg", alt="Wallet: InventiStudio recruitment task")
+            .col-12.col-md-7.col-lg-5.col-xl-4
+              form
+                label.fs-11.mb-8 E-mail address
+                input.o-input.mb-16(
+                  v-model.trim="email",
+                  type="email",
+                  placeholder="john.doe@mail.com",
+                )
+                label.fs-11.mb-8 Password
+                input.o-input.mb-16(
+                  v-model.trim="password",
+                  type="password",
+                  placeholder="Your pass****",
+                )
+              button.o-btn.bg-blue.mt-40.w-100(
+                @click="signIn()",
+                :disabled="$v.$error",
+                type="button",
+              )
+                span.fs-16.c-white Sign in
 </template>
 
 <script>
   import { mapActions } from 'vuex'
   import { required, email } from 'vuelidate/lib/validators'
 
-  export default {
+export default {
     name: 'SignIn',
     data: () => ({
       email: '',
@@ -39,6 +39,7 @@
     methods: {
       ...mapActions({
         login: 'auth/login',
+        autoLogin: 'auth/autoLogin',
       }),
       async signIn() {
         try {
@@ -52,6 +53,9 @@
     validations: {
       email: { required, email },
       password: { required },
+    },
+    created() {
+      return this.autoLogin()
     },
   }
 </script>

@@ -6,6 +6,7 @@ import api from 'src/services/api'
 
 const state = {
   isLoggedIn: !!ls.get(STORAGE_AUTH_TOKEN),
+  visible: false,
 }
 
 const getters = {
@@ -15,6 +16,7 @@ const getters = {
 const mutations = {
   LOGIN(state) {
     state.isLoggedIn = true
+    router.push('wallet')
   },
 }
 
@@ -28,19 +30,24 @@ const actions = {
       api.setHeader('x-auth-token', apiToken)
       if (!lsToken) {
         commit('LOGIN')
-        // router.push({ name: 'Wallet' })
+        router.push({ name: 'Wallet' })
       }
     } catch (err) {
       if (lsToken) ls.remove(STORAGE_AUTH_TOKEN)
       throw err
     }
   },
+  autoLogin({ commit }) {
+    return ls.get('wallet-auth-token')
+        ? commit('LOGIN')
+        : false
+  },
 }
 
 export default {
-    namespaced: 'auth',
-    state,
-    getters,
-    mutations,
-    actions,
+  namespaced: 'auth',
+  state,
+  getters,
+  mutations,
+  actions,
 }
