@@ -9,13 +9,13 @@ const state = {
 }
 
 const getters = {
-  count: state => state.count,
+  balance: state => state.balance,
 }
 
+
 const mutations = {
-  UPDATE_BALANCE(state, payload) {
-    state.balance = 1,
-    state.count = payload.meta.count
+  UPDATE_BALANCE: (state, data) => {
+    data.forEach(value => state.balance += value.amount)
   },
 }
 
@@ -25,13 +25,14 @@ const actions = {
       api.setHeader('x-auth-token', ls.get(STORAGE_AUTH_TOKEN))
       api.get('/transactions')
             .then((res) => {
-              commit('UPDATE_BALANCE', res.data)
+              commit('UPDATE_BALANCE', res.data.data)
             })
     } catch (err) {
       throw err
     }
   },
 }
+
 
 export default {
   namespaced: 'auth',

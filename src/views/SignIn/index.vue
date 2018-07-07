@@ -54,9 +54,6 @@ export default {
       email: { required, email },
       password: { required },
     },
-    created() {
-      return this.autoLogin()
-    },
   }
 </script>
 

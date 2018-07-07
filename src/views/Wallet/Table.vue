@@ -1,5 +1,5 @@
 <template lang="pug">
-    .container {{count}}
+    .container
 </template>
 
 <script>
