@@ -1,7 +1,6 @@
 import ls from 'local-storage'
-import store from 'src/store'
 import router from 'src/router'
-import { STORAGE_AUTH_TOKEN } from 'src/constants'
+import { STORAGE_AUTH_TOKEN, STORAGE_SESSION_EXPIRE } from 'src/constants'
 import api from 'src/services/api'
 
 const state = {
@@ -43,12 +42,18 @@ const actions = {
     }
   },
   autoLogin({ commit }) {
-    return ls.get('wallet-auth-token')
+    return ls.get(STORAGE_AUTH_TOKEN)
         ? commit('LOGIN')
         : false
   },
-  logout({ commit }) {
-   commit('LOGOUT')
+  async logout({ commit }) {
+    try {
+      await api.delete(`/sessions/${ls.get(STORAGE_AUTH_TOKEN)}`)
+        ? commit('LOGOUT')
+        : alert('Something went wrong')
+    } catch (err) {
+      throw err
+    }
   },
 }
 

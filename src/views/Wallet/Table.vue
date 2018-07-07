@@ -1,11 +1,21 @@
-<template>
-    
+<template lang="pug">
+    .container {{count}}
 </template>
 
 <script>
-    export default {
-      name: 'Table',
-    }
+  import store from '../../store/index'
+
+  export default {
+    name: 'Table',
+    state: {
+      count: 0,
+    },
+    computed: {
+      count() {
+        return this.$store.state.wallet.count
+      },
+    },
+  }
 </script>
 
 <style scoped>

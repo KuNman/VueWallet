@@ -31,7 +31,7 @@ Kamil & Piotrek, [InventiStudio](https://inventi.studio)
 
 ## User stories
 - [x] As a guest I am able to sign in.
-- [ ] As a user I am able to sign out.
+- [x] As a user I am able to sign out.
 - [ ] As a user I am able to see all my transactions.
 - [ ] As a user I am able to see all my withdrawals (transactions where I took money out of my wallet).
 - [ ] As a user I am able to see all my additions (transactions where I added money to my wallet).
