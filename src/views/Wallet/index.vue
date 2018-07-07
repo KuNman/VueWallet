@@ -1,41 +1,22 @@
 <template lang="pug">
-    <transition name="slide" mode="out-in">
-    <div class="logout"><button class="btn">Logout</button></div>
-    </transition>
+    div
+      app-header
 </template>
 
 <script>
-  export default {
-    name: 'Wallet',
-  }
+import Header from './Header'
+import Navbar from './NavBar'
+import Table from './Table'
+
+export default {
+  name: 'Wallet',
+  components: {
+    'app-header': Header,
+    'app-navbar': Navbar,
+    'app-table': Table,
+  },
+}
 </script>
 
-<style>
-    .slide-enter-active {
-        animation: slide-in 200ms ease-out forwards;
-    }
-    .slide-leave-active {
-        animation: slide-out 350ms ease-out forwards;
-    }
-    @keyframes slide-in {
-        from {
-            transform: translateY(-30px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes slide-out {
-        from {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateY(-30px);
-            opacity: 0;
-        }
-    }
+<style lang="sass" scoped>
 </style>

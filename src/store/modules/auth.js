@@ -18,6 +18,11 @@ const mutations = {
     state.isLoggedIn = true
     router.push('wallet')
   },
+  LOGOUT(state) {
+    ls.remove('wallet-auth-token')
+    state.isLoggedIn = false
+    router.push('/')
+  },
 }
 
 const actions = {
@@ -41,6 +46,9 @@ const actions = {
     return ls.get('wallet-auth-token')
         ? commit('LOGIN')
         : false
+  },
+  logout({ commit }) {
+   commit('LOGOUT')
   },
 }
 
