@@ -32,10 +32,10 @@ Kamil & Piotrek, [InventiStudio](https://inventi.studio)
 ## User stories
 - [x] As a guest I am able to sign in.
 - [x] As a user I am able to sign out.
-- [ ] As a user I am able to see all my transactions.
-- [ ] As a user I am able to see all my withdrawals (transactions where I took money out of my wallet).
-- [ ] As a user I am able to see all my additions (transactions where I added money to my wallet).
-- [ ] As a user I am able to see wallet summary.
+- [x] As a user I am able to see all my transactions.
+- [x] As a user I am able to see all my withdrawals (transactions where I took money out of my wallet).
+- [x] As a user I am able to see all my additions (transactions where I added money to my wallet).
+- [x] As a user I am able to see wallet summary.
 
 ## Design
 At `/design` directory you can find previews of User Interface, design guidelines and all the required assets.
