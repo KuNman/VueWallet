@@ -1,23 +1,49 @@
 <template lang="pug">
     .container
+      div.table-responsive
+        table.table
+          thead
+            tr
+              th Added at
+              th Title
+              th Amount
+          tbody(v-for="transaction in transactions[tab]")
+            tr
+              th {{transaction.createdAt}}
+              th {{transaction.name}}
+              th {{transaction.amount}}
 </template>
 
 <script>
-  import store from '../../store/index'
+  import { mapGetters } from 'vuex'
+  import VueContentLoading from 'vue-content-loading'
 
   export default {
     name: 'Table',
-    state: {
-      count: 0,
+    methods: {
+      ...mapGetters({
+        transactionsGett: 'wallet/transactions',
+        activeTabGett: 'wallet/tab',
+      }),
     },
     computed: {
-      count() {
-        return this.$store.state.wallet.count
+      transactions() {
+        return this.transactionsGett()
       },
+      tab() {
+        return this.activeTabGett()
+      },
+    },
+    components: {
+      VueContentLoading,
     },
   }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
+  .container
+    padding-top: 25px
 
+  .table
+    width: 100%
 </style>
