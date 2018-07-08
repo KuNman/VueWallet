@@ -8,7 +8,7 @@
               th Title
               th Amount
               th
-          tbody(v-if="transactions[tab].length > 1")
+          tbody(v-if="transactions[tab].length >= 1")
             tr(v-for="transaction in transactions[tab]")
               th {{transaction.createdAt | moment("YYYY-MM-DD") }}
               th {{transaction.name}}
@@ -16,12 +16,12 @@
               th
                 img(src="~assets/more.svg" style={'cursor':'pointer'})
           tbody(v-else)
-            tr
+            tr(v-for="n in 10")
               th
                 #{'content-loader'}(
                   :height="50"
                   :width="400"
-                  :speed="8"
+                  :speed="2"
                   primaryColor="#57b6FF"
                   secondaryColor="#ecebeb"
                   )
@@ -30,7 +30,7 @@
                 #{'content-loader'}(
                   :height="50"
                   :width="400"
-                  :speed="8"
+                  :speed="2"
                   primaryColor="#57b6FF"
                   secondaryColor="#ecebeb"
                   )
@@ -39,7 +39,7 @@
                 #{'content-loader'}(
                   :height="50"
                   :width="400"
-                  :speed="8"
+                  :speed="2"
                   primaryColor="#57b6FF"
                   secondaryColor="#ecebeb"
                   )
@@ -48,7 +48,7 @@
                 #{'content-loader'}(
                   :height="50"
                   :width="100"
-                  :speed="8"
+                  :speed="2"
                   primaryColor="#57b6FF"
                   secondaryColor="#ecebeb"
                   )
