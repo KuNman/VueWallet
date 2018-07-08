@@ -23,7 +23,7 @@ const routes = [
       // store.getters.auth.isLoggedIn zwraca undefined
     beforeEnter: (to, from, next) => store.state.auth.isLoggedIn
       ? next()
-      : routes.push({ name: 'SignIn' }),
+      : router.push({name: 'SignIn'})
   },
 ]
 

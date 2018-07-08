@@ -1,7 +1,8 @@
 import ls from 'local-storage'
 import router from 'src/router'
-import { STORAGE_AUTH_TOKEN, STORAGE_SESSION_EXPIRE } from 'src/constants'
+import { STORAGE_AUTH_TOKEN } from 'src/constants'
 import api from 'src/services/api'
+import store from '../index'
 
 const state = {
   isLoggedIn: !!ls.get(STORAGE_AUTH_TOKEN),
@@ -19,6 +20,7 @@ const mutations = {
   },
   LOGOUT(state) {
     ls.remove('wallet-auth-token')
+    store.state.wallet.balance = 0
     state.isLoggedIn = false
     router.push('/')
   },

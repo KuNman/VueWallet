@@ -39,7 +39,6 @@ export default {
     methods: {
       ...mapActions({
         login: 'auth/login',
-        autoLogin: 'auth/autoLogin',
       }),
       async signIn() {
         try {
