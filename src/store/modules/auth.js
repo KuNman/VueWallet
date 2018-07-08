@@ -21,6 +21,11 @@ const mutations = {
   LOGOUT(state) {
     ls.remove('wallet-auth-token')
     store.state.wallet.balance = 0
+    store.state.wallet.transactions = {
+      out: [],
+      in: [],
+      all: [],
+    },
     state.isLoggedIn = false
     router.push('/')
   },

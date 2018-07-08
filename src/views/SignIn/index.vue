@@ -48,6 +48,10 @@ export default {
           throw err
         }
       },
+      checkEnter(object) {
+        console.log('CHECKING ENTER')
+        console.log(object)
+      },
     },
     validations: {
       email: { required, email },

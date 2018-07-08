@@ -33,10 +33,10 @@ const mutations = {
 }
 
 const actions = {
-  listTransactions({ commit }) {
+  async listTransactions({ commit }) {
     try {
-      api.setHeader('x-auth-token', ls.get(STORAGE_AUTH_TOKEN))
-      api.get('/transactions')
+        api.setHeader('x-auth-token', ls.get(STORAGE_AUTH_TOKEN))
+        api.get('/transactions')
           .then((res) => {
             commit('UPDATE_BALANCE', res.data.data)
             commit('FILTER_TRANSACTIONS', res.data.data)

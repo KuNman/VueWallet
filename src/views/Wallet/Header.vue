@@ -2,8 +2,8 @@
     .container
       .row
         img.col-3.logo(src="~assets/logo_wallet.svg", alt="Wallet: InventiStudio recruitment task")
-        div.col-6.spacer
-        div.col-3.d-flex.align-items-center.justify-content-end
+        div.col-3.spacer
+        div.col-6.d-flex.align-items-center.justify-content-end
           button.signout-btn(type="button", @click="signOut")
                 span.signout-span Sign out
 </template>

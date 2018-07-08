@@ -8,9 +8,8 @@ import App from './views/App'
 import router from './router'
 import store from './store'
 
-
 Vue.use(Vuelidate)
-
+Vue.use(require('vue-moment'))
 
 sync(store, router)
 
